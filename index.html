@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wayfinding</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.ts"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <form>
+        <label for="fname">Start:</label><input type="text" id="fname" value="John">
+        <label for="fname">End:</label><input type="text" id="fname" value="John">
+        <input type="submit" value="Submit">
+      </form>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=get-this&callback=initMap&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
