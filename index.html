@@ -9,11 +9,9 @@
   </head>
   <body>
     <div id="map"></div>
-    <form>
-        <label for="fname">Start:</label><input type="text" id="fname" value="John">
-        <label for="fname">End:</label><input type="text" id="fname" value="John">
-        <input type="submit" value="Submit">
-      </form>
+    <label for="fname">Start:</label><input type="text" id="start" value="25">
+    <label for="fname">End:</label><input type="text" id="end" value="14">
+    <button onclick="find()">Find</button>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=get-this&callback=initMap&v=weekly"
       defer

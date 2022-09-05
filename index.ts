@@ -11,7 +11,34 @@ function initMap(): void {
       }
   );
 
-  drawPath(21, 15);
+  const markerSymbol = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 8,
+    strokeColor: "#ff0",
+  };
+
+  const endSymbol = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      strokeColor: "#0f0",
+  };
+
+  window.path = new google.maps.Polyline({
+    path: getNodes(21, 15),
+    strokeColor: "#0f0",
+    icons: [
+    {
+        icon: markerSymbol,
+        offset: "100%",
+    }, 
+    {
+        icon: endSymbol,
+        offset: "100%",
+    },
+    ],
+    map: window.mapInstance,
+  });
+
+  animateCircle(window.path);
 }
   
 function animateCircle(line: google.maps.Polyline) {
@@ -31,6 +58,8 @@ declare global {
   interface Window {
     initMap: () => void;
     mapInstance: google.maps.Map;
+    find: () => void;
+    path: google.maps.Polyline;
   }
 }
 
@@ -42,36 +71,14 @@ type Node = {
   path?: Node[];
 };
 
+function find() {
+  var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
+  var end = parseInt((document.getElementById("end") as HTMLInputElement).value);
+  drawPath(start, end);
+}
+
 function drawPath(start: number, end: number) {
-  const markerSymbol = {
-    path: google.maps.SymbolPath.CIRCLE,
-    scale: 8,
-    strokeColor: "#ff0",
-  };
-
-  const endSymbol = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      strokeColor: "#0f0",
-  };
-
-  // Create the polyline and add the symbol to it via the 'icons' property.
-  const line = new google.maps.Polyline({
-    path: getNodes(start, end),
-    strokeColor: "#0f0",
-    icons: [
-    {
-        icon: markerSymbol,
-        offset: "100%",
-    }, 
-    {
-        icon: endSymbol,
-        offset: "100%",
-    },
-    ],
-    map: window.mapInstance,
-  });
-
-  animateCircle(line);
+  window.path.setPath(getNodes(start, end) ?? []);
 }
 
 function getNodes(start: number, end: number) {
@@ -117,5 +124,6 @@ function breadthFirstSearch(graph: Node[], start: Node, idToSearch: number) {
 };
 
 window.initMap = initMap;
+window.find = find;
 export {};
   
