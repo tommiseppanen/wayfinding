@@ -26,14 +26,14 @@ function initMap(): void {
     path: getNodes(21, 15),
     strokeColor: "#0f0",
     icons: [
-    {
-        icon: markerSymbol,
-        offset: "100%",
-    }, 
-    {
+      {
         icon: endSymbol,
         offset: "100%",
-    },
+      },
+      {
+        icon: markerSymbol,
+        offset: "100%",
+      }, 
     ],
     map: window.mapInstance,
   });
@@ -49,7 +49,7 @@ function animateCircle(line: google.maps.Polyline) {
 
     const icons = line.get("icons");
 
-    icons[0].offset = count / 4 + "%";
+    icons[1].offset = count / 4 + "%";
     line.set("icons", icons);
   }, 20);
 }
