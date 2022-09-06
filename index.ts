@@ -25,8 +25,8 @@ function initMap(): void {
   };
 
   window.path = new google.maps.Polyline({
-    strokeWeight: 5,
-    path: getNodes(21, 15),
+    strokeWeight: 4,
+    path: getNodes(18, 29),
     strokeColor: pathColor,
     icons: [
       {
