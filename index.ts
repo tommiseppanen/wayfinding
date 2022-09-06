@@ -2,6 +2,8 @@ import nodes from "./nodes";
 
 function initMap(): void {
 
+  const pathColor = "#0f0";
+
   window.mapInstance = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
@@ -18,13 +20,14 @@ function initMap(): void {
   };
 
   const endSymbol = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      strokeColor: "#0f0",
+      path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+      strokeColor: pathColor,
   };
 
   window.path = new google.maps.Polyline({
+    strokeWeight: 5,
     path: getNodes(21, 15),
-    strokeColor: "#0f0",
+    strokeColor: pathColor,
     icons: [
       {
         icon: endSymbol,
