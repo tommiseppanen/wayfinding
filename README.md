@@ -1,2 +1,2 @@
-# Wayfinding demo
-Simple wayfinding demo that calculates the route between different gates in Helsinki Airport
+# Wayfinding example
+A simple wayfinding example. Calculates the route between different gates in Helsinki Airport
