@@ -34,11 +34,10 @@
   display: block;
   border: solid 1px #328cca;
   margin-top: 1.4rem;
-  height: 4rem;
   font-size: 1.4rem;
   border-radius: 0.4rem;
+  padding: 0.8rem;
   color: #fff;
-  width: 10rem;
   background-color: #2b96f1;
   box-shadow: 0 0 0.4rem rgb(200, 200, 200);
   cursor: pointer;
