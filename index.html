@@ -9,9 +9,13 @@
   </head>
   <body>
     <div id="map"></div>
-    <label for="fname">Start:</label><input type="text" id="start" value="18">
-    <label for="fname">End:</label><input type="text" id="end" value="29">
-    <button onclick="find()">Find</button>
+    <form class="control-panel" action="find()">
+      <label class="control-panel__label" for="fname">Start gate:</label>
+      <input class="control-panel__input" type="text" id="start" value="18">
+      <label class="control-panel__label" for="fname">End gate:</label>
+      <input class="control-panel__input" type="text" id="end" value="29">
+      <input type="submit" class="control-panel__button" value="Find route">
+    </form>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=get-this&callback=initMap&v=weekly"
       defer

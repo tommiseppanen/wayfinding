@@ -1,9 +1,50 @@
 #map {
-  height: 95%;
+  height: 100%;
+}
+
+.control-panel {
+  position: absolute;
+  top: 40%;
+  background-color: white;
+  padding: 1.4rem;
+}
+
+.control-panel__label {
+  display: block;
+  font-size: 1.4rem;
+  margin: 1.4rem 0 0.4rem 0;
+}
+
+.control-panel__input {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  height: 2.2rem;
+  padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+  font-size: 1.4rem;
+  border-radius: 0.3rem;
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.02) 0%, rgba(255, 255, 255, 0.02) 50%);
+  width: 10rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1)
+}
+
+.control-panel__button {
+  display: block;
+  border: solid 1px #328cca;
+  margin-top: 1.4rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  border-radius: 0.4rem;
+  color: #fff;
+  background-image: linear-gradient(top, #3798db, #2c7cd2);
+  width: 10rem;
+  background-color: #2b96f1;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
 }
 
 html,
 body {
+  font-family: Arial, sans-serif;
+  font-size: 62.5%;
   height: 100%;
   margin: 0;
   padding: 0;
