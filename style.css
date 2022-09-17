@@ -14,10 +14,11 @@
 .control-panel__label {
   display: block;
   font-size: 1.4rem;
-  margin: 1.4rem 0 0.4rem 0;
+  margin: 0 0 0.4rem 0;
 }
 
 .control-panel__input {
+  margin: 0 0 1.4rem 0;
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.16);
   height: 2.2rem;
