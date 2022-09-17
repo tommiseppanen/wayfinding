@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="map"></div>
-    <form class="control-panel" action="find()">
+    <form class="control-panel" onsubmit="event.preventDefault();find()">
       <label class="control-panel__label" for="fname">Start gate:</label>
       <input class="control-panel__input" type="text" id="start" value="18">
       <label class="control-panel__label" for="fname">End gate:</label>
