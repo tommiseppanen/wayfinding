@@ -52,10 +52,9 @@ function initMap(): void {
   animateCircle(window.path);
 }
 
-function getNodes(start: number, end: number) {
+function getNodes(start: number, end: number): google.maps.LatLngLiteral[] {
   const startNode = nodes.find(e => e.id === start);
-  if (startNode)
-    return breadthFirstSearch(nodes, startNode, end);
+  return startNode ? breadthFirstSearch(nodes, startNode, end) : [];
 }
   
 function animateCircle(line: google.maps.Polyline) {
@@ -71,7 +70,7 @@ function animateCircle(line: google.maps.Polyline) {
 function find() {
   var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
   var end = parseInt((document.getElementById("end") as HTMLInputElement).value);
-  window.path.setPath(getNodes(start, end) ?? []);
+  window.path.setPath(getNodes(start, end));
 }
 
 window.initMap = initMap;

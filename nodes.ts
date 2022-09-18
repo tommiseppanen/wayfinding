@@ -6,7 +6,7 @@ export type Node = {
   path?: Node[];
 };
 
-export const nodes = [
+export const nodes: Node[] = [
   { id: 12, lat: 60.315331190208546, lng: 24.972571565188332, connections: [13]},
   { id: 13, lat: 60.315714664255545, lng: 24.972182644881173, connections: [12,14]},
   { id: 14, lat: 60.31610188791155, lng: 24.971790430997714, connections: [13,15]},
