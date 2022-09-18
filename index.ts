@@ -66,8 +66,8 @@ function animateCircle(line: google.maps.Polyline): void {
 }
 
 function find(): void {
-  var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
-  var end = parseInt((document.getElementById("end") as HTMLInputElement).value);
+  const start = parseInt((document.getElementById("start") as HTMLInputElement).value);
+  const end = parseInt((document.getElementById("end") as HTMLInputElement).value);
   window.path.setPath(getNodes(start, end));
 }
 
