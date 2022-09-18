@@ -1,10 +1,16 @@
 import {nodes} from "./nodes";
 import {breadthFirstSearch} from "./search";
 
+declare global {
+  interface Window {
+    initMap: () => void;
+    mapInstance: google.maps.Map;
+    find: () => void;
+    path: google.maps.Polyline;
+  }
+}
+
 function initMap(): void {
-
-  const pathColor = "#0f0";
-
   window.mapInstance = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
@@ -20,6 +26,7 @@ function initMap(): void {
     strokeColor: "#ff0",
   };
 
+  const pathColor = "#0f0";
   const endSymbol = {
     path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
     strokeColor: pathColor,
@@ -44,6 +51,12 @@ function initMap(): void {
 
   animateCircle(window.path);
 }
+
+function getNodes(start: number, end: number) {
+  const startNode = nodes.find(e => e.id === start);
+  if (startNode)
+    return breadthFirstSearch(nodes, startNode, end);
+}
   
 function animateCircle(line: google.maps.Polyline) {
   let count = 0;
@@ -55,29 +68,10 @@ function animateCircle(line: google.maps.Polyline) {
   }, 20);
 }
 
-declare global {
-  interface Window {
-    initMap: () => void;
-    mapInstance: google.maps.Map;
-    find: () => void;
-    path: google.maps.Polyline;
-  }
-}
-
 function find() {
   var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
   var end = parseInt((document.getElementById("end") as HTMLInputElement).value);
-  drawPath(start, end);
-}
-
-function drawPath(start: number, end: number) {
   window.path.setPath(getNodes(start, end) ?? []);
-}
-
-function getNodes(start: number, end: number) {
-  const startNode = nodes.find(e => e.id === start);
-  if (startNode)
-    return breadthFirstSearch(nodes, startNode, end);
 }
 
 window.initMap = initMap;
