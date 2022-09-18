@@ -10,6 +10,9 @@ declare global {
   }
 }
 
+const pathColor = "#0f0";
+const markerColor = "#ff0";
+
 function initMap(): void {
   window.mapInstance = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
@@ -20,29 +23,24 @@ function initMap(): void {
       }
   );
 
-  const markerSymbol = {
-    path: google.maps.SymbolPath.CIRCLE,
-    scale: 8,
-    strokeColor: "#ff0",
-  };
-
-  const pathColor = "#0f0";
-  const endSymbol = {
-    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-    strokeColor: pathColor,
-  };
-
   window.path = new google.maps.Polyline({
     strokeWeight: 4,
     path: getNodes(18, 29),
     strokeColor: pathColor,
     icons: [
       {
-        icon: endSymbol,
+        icon: {
+          path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+          strokeColor: pathColor,
+        },
         offset: "100%",
       },
       {
-        icon: markerSymbol,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          strokeColor: markerColor,
+        },
         offset: "100%",
       }, 
     ],
@@ -57,7 +55,7 @@ function getNodes(start: number, end: number): google.maps.LatLngLiteral[] {
   return startNode ? breadthFirstSearch(nodes, startNode, end) : [];
 }
   
-function animateCircle(line: google.maps.Polyline) {
+function animateCircle(line: google.maps.Polyline): void {
   let count = 0;
   window.setInterval(() => {
     count = (count + 1) % 400;
@@ -67,7 +65,7 @@ function animateCircle(line: google.maps.Polyline) {
   }, 20);
 }
 
-function find() {
+function find(): void {
   var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
   var end = parseInt((document.getElementById("end") as HTMLInputElement).value);
   window.path.setPath(getNodes(start, end));
