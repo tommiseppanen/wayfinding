@@ -59,8 +59,8 @@ function animateCircle(line: google.maps.Polyline): void {
   let count = 0;
   window.setInterval(() => {
     count = (count + 1) % 400;
-    const icons = line.get("icons");
-    icons[1].offset = count / 4 + "%";
+    const icons = line.get("icons") as google.maps.IconSequence[];
+    icons[1].offset = `${count/4}%`;
     line.set("icons", icons);
   }, 20);
 }
