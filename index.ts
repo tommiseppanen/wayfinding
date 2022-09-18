@@ -1,4 +1,4 @@
-import nodes from "./nodes";
+import {nodes, Node} from "./nodes";
 
 function initMap(): void {
 
@@ -65,14 +65,6 @@ declare global {
     path: google.maps.Polyline;
   }
 }
-
-type Node = {
-  id: number;
-  lat: number;
-  lng: number;
-  connections: number[];
-  path?: Node[];
-};
 
 function find() {
   var start = parseInt((document.getElementById("start") as HTMLInputElement).value);
