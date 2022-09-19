@@ -1,4 +1,4 @@
-import {Node} from "./nodes";
+import { Node } from "./nodes";
 
 //For more complex graph we could use A* search
 export function breadthFirstSearch(graph: Node[], start: Node, idToSearch: number): Node[] {
@@ -12,20 +12,17 @@ export function breadthFirstSearch(graph: Node[], start: Node, idToSearch: numbe
 
   while (queue.length > 0) {
     const node = queue.shift();
-    if (node === undefined)
-      return [];
+    if (node === undefined) return [];
 
     for (let i = 0; i < node.connections.length; i++) {
-      const connectedNode = graph.find(e => e.id === node.connections[i]);
-      if (connectedNode === undefined)
-        continue;
+      const connectedNode = graph.find((e) => e.id === node.connections[i]);
+      if (connectedNode === undefined) continue;
 
       connectedNode.path = node.path === undefined ? [] : [...node.path];
-      connectedNode.path.push(connectedNode)
-      if (!visited.includes(connectedNode.id)) {            
-        if (connectedNode.id === idToSearch)
-          return connectedNode.path;
-        
+      connectedNode.path.push(connectedNode);
+      if (!visited.includes(connectedNode.id)) {
+        if (connectedNode.id === idToSearch) return connectedNode.path;
+
         visited.push(connectedNode.id);
         queue.push(connectedNode);
       }
